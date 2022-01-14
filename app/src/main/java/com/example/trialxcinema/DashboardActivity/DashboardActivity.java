@@ -40,8 +40,6 @@ public class DashboardActivity extends AppCompatActivity {
     public static String API_KEY = "90787843a200cfbfd55b14b39270f6a1";
     List<ResultsItem> listOfMovies;
 
-
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

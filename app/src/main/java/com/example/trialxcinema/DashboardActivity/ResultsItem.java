@@ -3,7 +3,6 @@ package com.example.trialxcinema.DashboardActivity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
@@ -40,7 +39,7 @@ public class ResultsItem implements Parcelable {
 	private double popularity;
 
 	@SerializedName("vote_average")
-	private double voteAverage;
+	private String voteAverage;
 
 	@SerializedName("id")
 	private int id;
@@ -61,7 +60,7 @@ public class ResultsItem implements Parcelable {
 		backdropPath = in.readString();
 		releaseDate = in.readString();
 		popularity = in.readDouble();
-		voteAverage = in.readDouble();
+		voteAverage = in.readString();
 		id = in.readInt();
 		adult = in.readByte() != 0;
 		voteCount = in.readInt();
@@ -159,11 +158,11 @@ public class ResultsItem implements Parcelable {
 		return popularity;
 	}
 
-	public void setVoteAverage(double voteAverage){
+	public void setVoteAverage(String voteAverage){
 		this.voteAverage = voteAverage;
 	}
 
-	public double getVoteAverage(){
+	public String getVoteAverage(){
 		return voteAverage;
 	}
 
@@ -207,7 +206,7 @@ public class ResultsItem implements Parcelable {
 		parcel.writeString(backdropPath);
 		parcel.writeString(releaseDate);
 		parcel.writeDouble(popularity);
-		parcel.writeDouble(voteAverage);
+		parcel.writeString(voteAverage);
 		parcel.writeInt(id);
 		parcel.writeByte((byte) (adult ? 1 : 0));
 		parcel.writeInt(voteCount);
