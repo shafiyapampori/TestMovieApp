@@ -4,6 +4,8 @@
     package="com.example.trialxcinema" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
 
     <application
         android:usesCleartextTraffic="true"
@@ -15,14 +17,14 @@
         android:theme="@style/Theme.TrialXCinema"
         tools:ignore="AllowBackup,UnusedAttribute" >
         <activity
-            android:name=".InfoScreenActivity"
+            android:name=".InfoScreen.InfoScreenActivity"
             android:exported="false" />
 
         <activity
             android:name=".DashboardActivity.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".Splash.SplashScreenActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

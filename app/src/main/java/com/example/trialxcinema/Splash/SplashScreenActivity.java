@@ -1,4 +1,4 @@
-package com.example.trialxcinema;
+package com.example.trialxcinema.Splash;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D3D1D4"
-    tools:context=".InfoScreenActivity">
+    tools:context=".InfoScreen.InfoScreenActivity">
 
     <ScrollView
         android:layout_width="match_parent"

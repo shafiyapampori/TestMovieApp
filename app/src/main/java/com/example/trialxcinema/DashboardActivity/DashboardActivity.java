@@ -24,21 +24,23 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.bumptech.glide.Glide;
-import com.example.trialxcinema.InfoScreenActivity;
+import com.example.trialxcinema.InfoScreen.InfoScreenActivity;
 import com.example.trialxcinema.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Tag;
 
 public class DashboardActivity extends AppCompatActivity {
 
     public static String API_KEY = "90787843a200cfbfd55b14b39270f6a1";
     List<ResultsItem> listOfMovies;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class DashboardActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_dashboard);
+        // Obtain the FirebaseAnalytics instance.
+        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView navigationView = findViewById(R.id.navigationView);
@@ -90,9 +94,15 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                Bundle params = new Bundle();
+                params.putInt("ImageId",view.getId());
+                String imageName = "id_"+ String.valueOf(listOfMovies.get(i).getId());
+
                 startActivity(new Intent(DashboardActivity.this, InfoScreenActivity.class)
                         .putExtra("ResultItem",listOfMovies.get(i)));
                 Log.e("MOVIE-INDEX::", String.valueOf(i));
+               Log.e("IMAGE CLICKED LOGGED::", imageName);
+                mFirebaseAnalytics.logEvent(imageName,params);
 
             }
         });
@@ -171,6 +181,7 @@ public class DashboardActivity extends AppCompatActivity {
             ImageView img_moviePoster = view.findViewById(R.id.img_moviePoster);
             Glide.with(DashboardActivity.this)
                         .load(itemList.get(i).getPosterPath())
+                    .placeholder(R.drawable.placeholder_image)
                     .into(img_moviePoster);
             return view;
         }

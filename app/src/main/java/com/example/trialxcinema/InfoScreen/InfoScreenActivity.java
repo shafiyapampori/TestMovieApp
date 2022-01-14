@@ -1,18 +1,19 @@
-package com.example.trialxcinema;
+package com.example.trialxcinema.InfoScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.example.trialxcinema.DashboardActivity.ResultsItem;
+import com.example.trialxcinema.R;
 import com.example.trialxcinema.databinding.ActivityInfoScreenBinding;
 
 public class InfoScreenActivity extends AppCompatActivity {
     ResultsItem data;
     ActivityInfoScreenBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +25,12 @@ public class InfoScreenActivity extends AppCompatActivity {
 
         Glide.with(InfoScreenActivity.this)
                 .load(data.getBackdropPath())
+                .placeholder(R.drawable.placeholder_image)
                 .into( binding.imgInnerThumbnail);
 
         Glide.with(InfoScreenActivity.this)
                 .load(data.getBackdropPath())
+                .placeholder(R.drawable.placeholder_image)
                 .into( binding.circleImageView);
 
         binding.tvRating.setText(data.getVoteAverage());
