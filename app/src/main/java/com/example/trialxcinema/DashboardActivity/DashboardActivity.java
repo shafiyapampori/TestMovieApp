@@ -123,8 +123,8 @@ public class DashboardActivity extends AppCompatActivity {
                         gridView.setAdapter(customAdapter);
                     }
 
-                    String message = "Request Successful....";
-                    Toast.makeText(DashboardActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+//                    String message = "Request Successful....";
+//                    Toast.makeText(DashboardActivity.this, "" + message, Toast.LENGTH_SHORT).show();
 
                 } else {
 
